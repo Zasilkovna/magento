@@ -21,6 +21,7 @@
 	</li>
 	<li>Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:<br>
 		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
+		
 ```		
 <p style="font-family: monospace;">
 <!-- ZASILKOVNA START -->
@@ -35,6 +36,7 @@
 ```
 		
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
+		
 ```
 <!-- ZASILKOVNA START -->
 <script type="text/javascript">
@@ -103,6 +105,7 @@
 </script>
 <!-- ZASILKOVNA END -->
 ```
+
 		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
 	
 ```
