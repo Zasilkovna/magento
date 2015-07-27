@@ -97,8 +97,9 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 </script>
 <!-- ZASILKOVNA END -->
 ```	
-		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
-		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
+
+**app\design\frontend\base\default\template\checkout\onepage\review\info.phtml**<br>
+```html
 <!-- ZASILKOVNA START -->
 <div class="connectDiv packetery-branch-list list-type=6 connect-field=#ordercomment-comment" style="border: 1px dotted black;"></div>
 
@@ -111,7 +112,8 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 
 </script>
 <!-- ZASILKOVNA END -->
-		</textarea>
+```
+
 	</li>
 
 	<li>
