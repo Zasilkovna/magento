@@ -9,7 +9,7 @@ Pan Adam Glumbík vytvořil modul pro Magento, který nabízí zdarma na svých 
 ###S případnými dotazy ohledně alternativního modulu se obracejte na pana [Glumbíka](mailto:glumbik@aglumbik.cz) tento modul není v režii zásilkovny a tudíž pro něj nemůžeme poskytovat technickou podporu.
 
 ##Modul vyvíjený zásilkovnou
-<p>Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od pana Glumbíka ale <strong>nebude modul nadále udržován</strong>, doporučujeme tedy použít modul zmíněný výše</p>
+Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od pana Glumbíka ale **nebude modul nadále udržován**, doporučujeme tedy použít modul zmíněný výše
 <h3>Instalace</h3>
 <ol style="color: black; ">
 	<li>Nejprve nainstalujte toto rozšíření z vašeho eshopu <strong>přes magento-connect</strong> - <a href="http://connect20.magentocommerce.com/community/Magemaven_OrderComment">http://connect20.magentocommerce.com/community/Magemaven_OrderComment</a>
