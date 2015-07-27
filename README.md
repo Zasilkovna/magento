@@ -21,9 +21,7 @@
 	</li>
 	<li>Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:<br>
 		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
-		
-		
-<p style="font-family: monospace;">
+		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 <!-- ZASILKOVNA START -->
 <script src="http://www.zasilkovna.cz/api/41494564a70d6de6/branch.js?callback=PacketeryLoaded"></script>
 <script type="text/javascript">
@@ -33,11 +31,9 @@
 	}
 </script>
 <!-- ZASILKOVNA END -->
-
-		
+		</textarea>
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
-		
-```
+		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 <!-- ZASILKOVNA START -->
 <script type="text/javascript">
 	var api = window.packetery;
@@ -104,11 +100,9 @@
 
 </script>
 <!-- ZASILKOVNA END -->
-```
-
+		</textarea>
 		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
-	
-```
+		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 <!-- ZASILKOVNA START -->
 <div class="connectDiv packetery-branch-list list-type=6 connect-field=#ordercomment-comment" style="border: 1px dotted black;"></div>
 
@@ -121,8 +115,7 @@
 
 </script>
 <!-- ZASILKOVNA END -->
-```
-		
+		</textarea>
 	</li>
 
 	<li>
