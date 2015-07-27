@@ -21,7 +21,7 @@
 	</li>
 	<li>Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:<br>
 		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
-*		
+```		
 <p style="font-family: monospace;">
 <!-- ZASILKOVNA START -->
 <script src="http://www.zasilkovna.cz/api/41494564a70d6de6/branch.js?callback=PacketeryLoaded"></script>
@@ -35,7 +35,7 @@
 ```
 		
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
-<code>
+```
 <!-- ZASILKOVNA START -->
 <script type="text/javascript">
 	var api = window.packetery;
@@ -105,7 +105,7 @@
 ```
 		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
 	
-<code>
+```
 <!-- ZASILKOVNA START -->
 <div class="connectDiv packetery-branch-list list-type=6 connect-field=#ordercomment-comment" style="border: 1px dotted black;"></div>
 
@@ -118,7 +118,7 @@
 
 </script>
 <!-- ZASILKOVNA END -->
-</code>
+```
 		
 	</li>
 
