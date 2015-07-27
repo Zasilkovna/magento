@@ -111,7 +111,7 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 </script>
 <!-- ZASILKOVNA END -->
 ```
-4. V checkoutu by se nyní zobrazí dopravní metody zásilkovny s výběrovým boxem poboček a v posledním kroku se vloží jméno a číslo pobočky do poznámky. Po uložení bude pobočka viditelná v administraci v přehledu objednávek.
+V checkoutu by se nyní zobrazí dopravní metody zásilkovny s výběrovým boxem poboček a v posledním kroku se vloží jméno a číslo pobočky do poznámky. Po uložení bude pobočka viditelná v administraci v přehledu objednávek.
 
 <h2>Informace o modulu</h2>
 <p>Podporované verze Magento:</p>
