@@ -15,7 +15,6 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 2. Do kořenového adresáře nakopírujte obsah [tohoto archivu »](http://www.zasilkovna.cz/soubory/magento-module.zip). Obsahuje 4 dopravní metody zásilkovna (2 cz, 2 sk - jeden se tedy může použít jako doprava s dobírkou a druhý bez)
 3. Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod: <br>
 **app\design\frontend\base\default\template\checkout\onepage.phtml**
-		
 ```html
 <!-- ZASILKOVNA START -->
 <script src="http://www.zasilkovna.cz/api/41494564a70d6de6/branch.js?callback=PacketeryLoaded"></script>
@@ -28,7 +27,6 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 <!-- ZASILKOVNA END -->
 ```	
 **app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml**
-
 ```html
 <!-- ZASILKOVNA START -->
 <script type="text/javascript">
@@ -97,8 +95,7 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 </script>
 <!-- ZASILKOVNA END -->
 ```	
-
-**app\design\frontend\base\default\template\checkout\onepage\review\info.phtml**<br>
+**app\design\frontend\base\default\template\checkout\onepage\review\info.phtml**
 ```html
 <!-- ZASILKOVNA START -->
 <div class="connectDiv packetery-branch-list list-type=6 connect-field=#ordercomment-comment" style="border: 1px dotted black;"></div>
