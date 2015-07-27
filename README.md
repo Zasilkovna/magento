@@ -13,7 +13,7 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 ###Instalace
 1. Nejprve nainstalujte toto rozšíření z vašeho eshopu **přes magento-connect** - [http://connect20.magentocommerce.com/community/Magemaven_OrderComment](http://connect20.magentocommerce.com/community/Magemaven_OrderComment)které přidá na konec checkoutu textové pole pro poznámku, do které se automaticky vloží jméno a číslo pobočky. Vložená pobočka poté bude zozbrazena v přehledu objednávek v administraci
 2. Do kořenového adresáře nakopírujte obsah [tohoto archivu »](http://www.zasilkovna.cz/soubory/magento-module.zip). Obsahuje 4 dopravní metody zásilkovna (2 cz, 2 sk - jeden se tedy může použít jako doprava s dobírkou a druhý bez)
-3. Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod: \\
+3. Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod: <br>
 **app\design\frontend\base\default\template\checkout\onepage.phtml**
 		
 ```html
@@ -27,8 +27,9 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 </script>
 <!-- ZASILKOVNA END -->
 ```	
-		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
-		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
+**app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml**
+
+```html
 <!-- ZASILKOVNA START -->
 <script type="text/javascript">
 	var api = window.packetery;
@@ -95,7 +96,7 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 
 </script>
 <!-- ZASILKOVNA END -->
-		</textarea>
+```	
 		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
 		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 <!-- ZASILKOVNA START -->
