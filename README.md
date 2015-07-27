@@ -23,7 +23,7 @@
 		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
 		
 		
-```
+```html
 <!-- ZASILKOVNA START -->
 <script src="http://www.zasilkovna.cz/api/41494564a70d6de6/branch.js?callback=PacketeryLoaded"></script>
 <script type="text/javascript">
