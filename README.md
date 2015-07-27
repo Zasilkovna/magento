@@ -15,7 +15,6 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 2. Do kořenového adresáře nakopírujte obsah [tohoto archivu »](http://www.zasilkovna.cz/soubory/magento-module.zip). Obsahuje 4 dopravní metody zásilkovna (2 cz, 2 sk - jeden se tedy může použít jako doprava s dobírkou a druhý bez)
 3. Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:
 **app\design\frontend\base\default\template\checkout\onepage.phtml**
-		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 		
 <code>
 <!-- ZASILKOVNA START -->
@@ -28,7 +27,6 @@ Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od
 </script>
 <!-- ZASILKOVNA END -->
 </code>
-</textarea>
 	
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
 		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
