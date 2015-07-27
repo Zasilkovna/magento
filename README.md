@@ -21,7 +21,7 @@
 	</li>
 	<li>Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:<br>
 		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
-		
+		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 		
 ```html
 <!-- ZASILKOVNA START -->
@@ -34,6 +34,7 @@
 </script>
 <!-- ZASILKOVNA END -->
 ```
+</textarea>
 	
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
 		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
