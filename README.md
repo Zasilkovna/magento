@@ -1,6 +1,6 @@
-<h1>Modul pro Magento</h1>
+#Modul pro Magento
 
-<h2>Modul pro Magento, vyvíjený panem <a href="http://aglumbik.cz">Adamem Glumbíkem</a></h2>
+##Modul pro Magento, vyvíjený panem [Adamem Glumbíkem]("http://aglumbik.cz")
 <p>Pan Adam Glumbík vytvořil modul pro Magento, který nabízí zdarma na svých stránkách.</p>
 <ul>
 	<li>Modul je kompatibilní i se standardním Magento instalátorem modulů<br> a je otestován pro všechny verze od Magento CE 1.4.</li>
