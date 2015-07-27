@@ -140,4 +140,4 @@
 			<li>možnost rozlišení ceny dle cílové země</li>
 			<li>vybraná pobočka se zobrazuje v detailu objednávky v administrátorské (back-office) sekci</li>
 		</ul>
-	</li>
+	
