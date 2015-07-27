@@ -10,7 +10,7 @@ Pan Adam Glumbík vytvořil modul pro Magento, který nabízí zdarma na svých 
 
 ##Modul vyvíjený zásilkovnou
 Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od pana Glumbíka ale **nebude modul nadále udržován**, doporučujeme tedy použít modul zmíněný výše
-<h3>Instalace</h3>
+###Instalace
 <ol style="color: black; ">
 	<li>Nejprve nainstalujte toto rozšíření z vašeho eshopu <strong>přes magento-connect</strong> - <a href="http://connect20.magentocommerce.com/community/Magemaven_OrderComment">http://connect20.magentocommerce.com/community/Magemaven_OrderComment</a>
 	které přidá na konec checkoutu textové pole pro poznámku, do které se automaticky vloží jméno a číslo pobočky. Vložená pobočka poté bude zozbrazena v přehledu objednávek v administraci
