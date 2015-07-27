@@ -6,9 +6,9 @@ Pan Adam Glumbík vytvořil modul pro Magento, který nabízí zdarma na svých 
 * Návod a popis funkcí naleznete [zde](http://www.zasilkovna.cz/soubory/aglumbik_zasilkovna.pdf")
 * Pro stažení modulu navštivte prosím web [aglumbik.cz/magento-moduly]("http://aglumbik.cz/magento-moduly")
 
-<h3>S případnými dotazy ohledně alternativního modulu se obracejte na pana <a href="mailto:glumbik@aglumbik.cz">Glumbíka</a>, tento modul není v režii zásilkovny a tudíž pro něj nemůžeme poskytovat technickou podporu.</h3>
-<hr />
-<h2>Modul vyvíjený zásilkovnou</h2>
+###S případnými dotazy ohledně alternativního modulu se obracejte na pana [Glumbíka](mailto:glumbik@aglumbik.cz) tento modul není v režii zásilkovny a tudíž pro něj nemůžeme poskytovat technickou podporu.
+
+##Modul vyvíjený zásilkovnou
 <p>Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od pana Glumbíka ale <strong>nebude modul nadále udržován</strong>, doporučujeme tedy použít modul zmíněný výše</p>
 <h3>Instalace</h3>
 <ol style="color: black; ">
