@@ -32,7 +32,7 @@
 	}
 </script>
 <!-- ZASILKOVNA END -->
-*
+```
 		
 		<strong>app\design\frontend\base\default\template\checkout\onepage\shipping_method\available.phtml</strong><br>
 <code>
@@ -102,7 +102,7 @@
 
 </script>
 <!-- ZASILKOVNA END -->
-</code>
+```
 		<strong>app\design\frontend\base\default\template\checkout\onepage\review\info.phtml</strong><br>
 	
 <code>
