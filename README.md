@@ -11,15 +11,10 @@ Pan Adam Glumbík vytvořil modul pro Magento, který nabízí zdarma na svých 
 ##Modul vyvíjený zásilkovnou
 Můžete použít i modul vyvinutý zásilkovnou, vzhledem k existenci modulu od pana Glumbíka ale **nebude modul nadále udržován**, doporučujeme tedy použít modul zmíněný výše
 ###Instalace
-<ol style="color: black; ">
-	<li>Nejprve nainstalujte toto rozšíření z vašeho eshopu <strong>přes magento-connect</strong> - <a href="http://connect20.magentocommerce.com/community/Magemaven_OrderComment">http://connect20.magentocommerce.com/community/Magemaven_OrderComment</a>
-	které přidá na konec checkoutu textové pole pro poznámku, do které se automaticky vloží jméno a číslo pobočky. Vložená pobočka poté bude zozbrazena v přehledu objednávek v administraci
-	</li>
-	<li>
-		Do kořenového adresáře nakopírujte obsah <a href="http://www.zasilkovna.cz/soubory/magento-module.zip">tohoto archivu »</a>. Obsahuje 4 dopravní metody zásilkovna (2 cz, 2 sk - jeden se tedy může použít jako doprava s dobírkou a druhý bez)
-	</li>
-	<li>Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:<br>
-		<strong>app\design\frontend\base\default\template\checkout\onepage.phtml</strong><br>
+1. Nejprve nainstalujte toto rozšíření z vašeho eshopu **přes magento-connect** - [http://connect20.magentocommerce.com/community/Magemaven_OrderComment](http://connect20.magentocommerce.com/community/Magemaven_OrderComment)které přidá na konec checkoutu textové pole pro poznámku, do které se automaticky vloží jméno a číslo pobočky. Vložená pobočka poté bude zozbrazena v přehledu objednávek v administraci
+2. Do kořenového adresáře nakopírujte obsah [tohoto archivu »](http://www.zasilkovna.cz/soubory/magento-module.zip). Obsahuje 4 dopravní metody zásilkovna (2 cz, 2 sk - jeden se tedy může použít jako doprava s dobírkou a druhý bez)
+3. Pokud používáte checkout-onepage (standartní instalace magenta), <strong>na konec</strong> zmíněných souboru vložte přiložený javascript kod:
+**app\design\frontend\base\default\template\checkout\onepage.phtml**
 		<textarea onfocus="this.select();" onclick="this.select();" onkeyup="this.select();" readonly="" id="taCode" style="width: 100%; height: 100px">
 		
 <code>
