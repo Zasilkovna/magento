@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Zasilkovna_Zasilkovna2cz>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Zasilkovna_Zasilkovna2cz>
+  </modules>
+</config>

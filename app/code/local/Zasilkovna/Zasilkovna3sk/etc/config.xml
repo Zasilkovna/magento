@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+	<default>
+		<carriers>
+			<zasilkovna3sk>
+				<active>1</active>
+				<sallowspecific>0</sallowspecific>
+				<model>Zasilkovna_Zasilkovna3sk_Model_Carrier_ShippingMethod</model>
+				<name>Zasilkovna3 SK</name>
+				<title>Zasilkovna3 SK</title>
+				<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+				<price>0</price>
+			</zasilkovna3sk>
+		</carriers>
+	</default>
+
+	<modules>
+		<Zasilkovna_Zasilkovna3sk>
+			<version>0.1.0</version>
+		</Zasilkovna_Zasilkovna3sk>
+	</modules>
+
+	<global>
+
+		<models>
+			<zasilkovna3sk>
+				<class>Zasilkovna_Zasilkovna3sk_Model</class>
+			</zasilkovna3sk>
+		</models>
+
+		<resources>
+			<zasilkovna3sk_setup>
+
+				<setup>
+					<module>Zasilkovna_Zasilkovna3sk</module>
+				</setup>
+
+				<connection>
+					<use>core_setup</use>
+				</connection>
+
+			</zasilkovna3sk_setup>
+		</resources>
+
+	</global>
+
+</config>

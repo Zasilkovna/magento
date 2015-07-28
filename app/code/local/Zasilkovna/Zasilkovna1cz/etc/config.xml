@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+	<default>
+		<carriers>
+			<zasilkovna1cz>
+				<active>1</active>
+				<sallowspecific>0</sallowspecific>
+				<model>Zasilkovna_Zasilkovna1cz_Model_Carrier_ShippingMethod</model>
+				<name>Zasilkovna1 CZ</name>
+				<title>Zasilkovna1 CZ</title>
+				<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+				<price>0</price>
+			</zasilkovna1cz>
+		</carriers>
+	</default>
+
+	<modules>
+		<Zasilkovna_Zasilkovna1cz>
+			<version>0.1.0</version>
+		</Zasilkovna_Zasilkovna1cz>
+	</modules>
+
+	<global>
+
+		<models>
+			<zasilkovna1cz>
+				<class>Zasilkovna_Zasilkovna1cz_Model</class>
+			</zasilkovna1cz>
+		</models>
+
+		<resources>
+			<zasilkovna1cz_setup>
+
+				<setup>
+					<module>Zasilkovna_Zasilkovna1cz</module>
+				</setup>
+
+				<connection>
+					<use>core_setup</use>
+				</connection>
+
+			</zasilkovna1cz_setup>
+		</resources>
+
+	</global>
+
+</config>
