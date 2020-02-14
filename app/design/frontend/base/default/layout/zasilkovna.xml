@@ -1,0 +1,34 @@
+<layout>
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/zasilkovna/zasilkovna.css</name>
+            </action>
+        </reference>
+        <reference name="checkout.onepage">
+            <action method="setTemplate">
+                <template>zasilkovna/checkout/onepage.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_shippingmethod>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>zasilkovna/checkout/shipping_method/available.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_shippingmethod>
+
+    <checkout_onepage_success>
+        <reference name="content">
+            <reference name="checkout.success">
+                <action method="setTemplate">
+                    <template>zasilkovna/checkout/success.phtml</template>
+                </action>
+            </reference>
+        </reference>
+    </checkout_onepage_success>
+</layout>

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+        <carriers>
+            <zasilkovna>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>Zasilkovna_Checkout_Model_Carrier_ShippingMethod</model>
+                <name>Zásilkovna</name>
+                <title>Zásilkovna</title>
+                <specificerrmsg>Tato metoda je aktuálně nedostupná. Pokud byste chtěli nakoupit tímto způsobem dopravy, kontaktujte nás.
+                </specificerrmsg>
+                <price>0</price>
+            </zasilkovna>
+        </carriers>
+    </default>
+
+    <modules>
+        <Zasilkovna_Checkout>
+            <version>0.1.0</version>
+        </Zasilkovna_Checkout>
+    </modules>
+
+    <global>
+        <resources>
+            <zasilkovna_setup>
+
+                <setup>
+                    <module>Zasilkovna_Checkout</module>
+                    <class>Zasilkovna_Checkout_Model_Resource_Mysql4_Setup</class>
+                </setup>
+
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+
+            </zasilkovna_setup>
+        </resources>
+        <helpers>
+            <zasilkovna>
+                <class>Zasilkovna_Checkout_Helper</class>
+            </zasilkovna>
+        </helpers>
+
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <specialitem>
+                        <type>singleton</type>
+                        <class>Zasilkovna_Checkout_Model_Observer</class>
+                        <method>updatePacketeryData</method>
+                    </specialitem>
+                </observers>
+            </sales_order_place_after>
+            <model_config_data_save_before>
+                <observers>
+                    <zasilkovna>
+                        <type>singleton</type>
+                        <class>Zasilkovna_Checkout_Model_Observer</class>
+                        <method>updateRules</method>
+                    </zasilkovna>
+                </observers>
+            </model_config_data_save_before>
+        </events>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <agreements>Zasilkovna_Checkout_Block_Checkout_Agreements</agreements>
+                </rewrite>
+            </checkout>
+            <backend>
+                <class>Zasilkovna_Checkout_Block</class>
+            </backend>
+        </blocks>
+
+        <models>
+
+            <sales>
+                <rewrite>
+                    <!-- Model -->
+                    <order>Zasilkovna_Checkout_Model_Order</order>
+                </rewrite>
+            </sales>
+
+            <zasilkovna>
+                <class>Zasilkovna_Checkout_Model</class>
+                <resourceModel>zasilkovna_resource</resourceModel>
+            </zasilkovna>
+
+            <zasilkovna_resource>
+                <class>Zasilkovna_Checkout_Model_Resource</class>
+                <entities>
+                    <porder>
+                        <table>packetery_order</table>
+                    </porder>
+                </entities>
+            </zasilkovna_resource>
+
+        </models>
+    </global>
+
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <zasilkovna_options>
+                                            <title>Config</title>
+                                        </zasilkovna_options>
+                                        <zasilkovna_rules>
+                                            <title>Rules</title>
+                                        </zasilkovna_rules>
+                                        <zasilkovna_cod>
+                                            <title>CashOnDelivery</title>
+                                        </zasilkovna_cod>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Zasilkovna_Checkout>
+                    <files>
+                        <default>Zasilkovna_Checkout.csv</default>
+                    </files>
+                </Zasilkovna_Checkout>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <!--Declare the route for controller-->
+    <admin>
+        <routers>
+            <!--Unique identifier-->
+            <zasilkovna>
+                <use>admin</use>
+                <args>
+                    <module>Zasilkovna_Checkout</module>
+                    <frontName>zasilkovna</frontName>
+                </args>
+            </zasilkovna>
+        </routers>
+    </admin>
+
+    <frontend>
+        <layout>
+            <updates>
+                <zasilkovna module="zasilkovna">
+                    <file>zasilkovna.xml</file>
+                </zasilkovna>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Zasilkovna_Checkout>
+                    <files>
+                        <default>Zasilkovna_Checkout.csv</default>
+                    </files>
+                </Zasilkovna_Checkout>
+            </modules>
+        </translate>
+    </frontend>
+
+</config>

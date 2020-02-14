@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Zasilkovna_Checkout>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Zasilkovna_Checkout>
+  </modules>
+</config>

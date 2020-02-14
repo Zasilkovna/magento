@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+  <!-- Declare the new option menu-->
+  <menu>
+    <!-- Will be a child of the System option in the menu, you can use Sales, Catalog, Newsletter, etc -->
+    <sales>
+      <children>
+        <!-- Module identifier -->
+        <zasilkovna_checkout>
+          <title>Zásilkovna - objednávky</title>
+          <!-- Order in menu -->
+          <sort_order>500</sort_order>
+          <!-- frontname/controller/action -->
+          <action>zasilkovna/adminhtml_order/index</action>
+        </zasilkovna_checkout>
+      </children>
+    </sales>
+  </menu>
+  <!-- declare access control list for the module -->
+  <acl>
+    <resources>
+      <all>
+        <title>Povolit vše</title>
+      </all>
+      <admin>
+        <children>
+          <!-- This is for the Sales option of the Backend Menu -->
+          <sales translate="title" module="Zasilkovna_Checkout">
+            <title>Zásilkovna - objednávky</title>
+            <sort_order>60</sort_order>
+            <children>
+              <!-- This is the module identifier we used above-->
+              <zasilkovna_chcekout>
+                <title>Zásilkovna - objednávky</title>
+              </zasilkovna_chcekout>
+            </children>
+          </sales>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>
