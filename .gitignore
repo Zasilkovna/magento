@@ -41,8 +41,10 @@ skin/frontend/base/default/js/*
 /app/etc/local.xml
 /app/etc/local.xml.additional
 /app/etc/local.xml.template
-/app/locale/en_US/*
-!/app/locale/en_US/Zasilkovna_Checkout.csv
+/app/locale/cs_CZ/*
+!/app/locale/cs_CZ/Zasilkovna_Checkout.csv
+/app/locale/sk_SK/*
+!/app/locale/sk_SK/Zasilkovna_Checkout.csv
 
 .htaccess
 .htaccess.sample

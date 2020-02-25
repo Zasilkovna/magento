@@ -5,7 +5,7 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_Address
 {
     public function render(Varien_Object $row)
     {
-        // toto je hnusny
+        // TODO: refactoring
         $street = $row->getData('recipient_street');
         $city = $row->getData('recipient_city');
         $houseNumber = $row->getData('recipient_house_number');

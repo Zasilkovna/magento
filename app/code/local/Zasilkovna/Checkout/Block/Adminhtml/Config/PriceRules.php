@@ -17,22 +17,22 @@ class Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules extends Mage_Adminht
 	{
 
 		$this->addColumn('weight_min', array(
-			'label' => Mage::helper('zasilkovna')->__('Hmotnost od'),
+			'label' => Mage::helper('zasilkovna')->__('Weight from'),
 			'style' => 'width:100px',
 			'class' => 'validate-zero-or-greater input-text',
 		));
 		$this->addColumn('weight_max', array(
-			'label' => Mage::helper('zasilkovna')->__('Hmotnost do (včetně)'),
+			'label' => Mage::helper('zasilkovna')->__('Weight to (includes)'),
 			'style' => 'width:100px',
 			'class' => 'validate-zero-or-greater input-text',
 		));
 		$this->addColumn('price', array(
-			'label' => Mage::helper('zasilkovna')->__('Cena'),
+			'label' => Mage::helper('zasilkovna')->__('Price'),
 			'class' => 'validate-zero-or-greater input-text',
 		));
 
 		$this->_addAfter = false;
-		$this->_addButtonLabel = Mage::helper('zasilkovna')->__('Přidat pravidlo');
+		$this->_addButtonLabel = Mage::helper('zasilkovna')->__('Add rule');
 	}
 
 	protected function _getRenderer()

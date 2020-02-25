@@ -8,7 +8,8 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_ExportTime
     public function render(Varien_Object $row)
     {
         $exportedAt = $row->getData('exported_at');
+        $isExported = $row->getData('exported');
 
-        return Mage::helper('core')->formatDate($exportedAt, 'medium', true);
-    }
+        return ($isExported && !is_null($exportedAt) ? Mage::helper('core')->formatDate($exportedAt, 'medium', true) : "");
+	}
 }

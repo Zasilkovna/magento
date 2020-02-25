@@ -9,10 +9,6 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_Name
         $firstname =  $row->getData('recipient_firstname');
         $lastname =  $row->getData('recipient_lastname');
 
-        // hnusny
-        $value = $lastname . ' ' . $firstname;
-
-        $html = $value;
-        return $html;
+		return sprintf('%s %s', $firstname, $lastname);
     }
 }

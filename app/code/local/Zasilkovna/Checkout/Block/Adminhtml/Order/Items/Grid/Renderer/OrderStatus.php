@@ -8,8 +8,9 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_OrderStatus
 	{
 
 		$orderNumber =  $row->getData('order_number');
+		/** @var \Mage_Sales_Model_Order $order */
 		$order = Mage::getModel('sales/order')->loadByIncrementId($orderNumber);
 
-		return $order->getStatus();
+		return $order->getStatusLabel();
 	}
 }

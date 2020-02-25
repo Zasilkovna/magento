@@ -6,6 +6,19 @@ class Zasilkovna_Checkout_Model_Observer{
 	const SHIPPING_CODE = 'zasilkovna_zasilkovna';
 	const ORDER_ADDRESS_REGEX ='/^(.*[^0-9]+) (([1-9][0-9]*)\/)?([1-9][0-9]*[a-cA-C]?)$/';
 
+	const CZ_FICTIVE_BRANCH = array(
+		'id' => 540,
+		'name' => 'AA Andělská Hora',
+	);
+	const SK_FICTIVE_BRANCH = array(
+		'id' => 703,
+		'name' => 'Abovce',
+	);
+	const HU_FICTIVE_BRANCH = array(
+		'id' => 2485,
+		'name' => 'AA Angyalföld',
+	);
+
 	/**
 	 * Runs before config save - validates input values
 	 */
@@ -36,7 +49,7 @@ class Zasilkovna_Checkout_Model_Observer{
             {
                 if(empty($group['fields']['default_price']['value']))
                 {
-                    $message = Mage::helper('zasilkovna')->__('Některé ceny nejsou vyplněné');
+                    $message = Mage::helper('zasilkovna')->__('Some prices are not filled');
                     throw new Exception($message);                
                 }
                 continue;
@@ -45,7 +58,7 @@ class Zasilkovna_Checkout_Model_Observer{
             $groupNameParts = explode(self::CONFIGURATION_KEY, $key);
             $groupName = end($groupNameParts);            
             // jen pro kody zemi
-            $groupName = !empty($groupName) && strlen($groupName) == 2 ? strtoupper($groupName) : null; 
+            $groupName = (!empty($groupName) && strlen($groupName) == 2 ? sprintf("[%s]: ", strtoupper($groupName)) : "");
             $weightMax = 0; 
 		
             foreach ($params as $key => $line)
@@ -54,16 +67,20 @@ class Zasilkovna_Checkout_Model_Observer{
                 {
                     continue;
                 }
-							
-				if ($line['weight_max'] < $weightMax ||  $line['weight_min'] < $weightMax || $line['weight_min'] > $line['weight_max'])
+
+				if ($line['weight_max'] < $weightMax ||  $line['weight_min'] < $weightMax || ($line['weight_min'] > 0 && $line['weight_min'] < $weightMax) || $line['weight_min'] > $line['weight_max'] )
                 {
-                    $message = Mage::helper('zasilkovna')->__('Váhové intervaly se nesmí překrývat') . $groupName ? " [$groupName]" : "";
-                    throw new Exception($message);
-                }
+					$message = $groupName . Mage::helper('zasilkovna')->__('The weight intervals must not overlap');
+					Mage::throwException($message);
+
+                } elseif($line['weight_min'] === $line['weight_max']) {
+					$message = $groupName . Mage::helper('zasilkovna')->__('The weight intervals must not be the same.');
+					Mage::throwException($message);
+				}
                 if (empty($line['price']))
                 {
-                    $message = Mage::helper('zasilkovna')->__('Některé ceny nejsou vyplněné.') . $groupName ? " [$groupName]" : "";
-                    throw new Exception($message);
+                    $message = $groupName . Mage::helper('zasilkovna')->__('Some prices are not filled');
+					Mage::throwException($message);
                 }
                 $weightMax = $line['weight_max'];
             }
@@ -75,10 +92,16 @@ class Zasilkovna_Checkout_Model_Observer{
 	 * TODO: chybi mi validace jako v JS
 	 */
 
-	public function updatePacketeryData($observer){
-		
+	/**
+	 * @param \Varien_Event_Observer $observer
+	 */
+	public function updatePacketeryData(Varien_Event_Observer $observer){
+
 		$orderEvent = $observer->getEvent()->getOrder();
+
+		/** @var \Mage_Sales_Model_Order $orderEvent */
 		$orderId = $orderEvent->getIncrementId();
+		$parentOrderNumber = $orderEvent->getRelationParentRealId();
 
 		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId); 
 		$shippingMethod = $order->getShippingMethod();
@@ -88,28 +111,22 @@ class Zasilkovna_Checkout_Model_Observer{
 		{
 			return;
 		}
-		
-		$requestParams = Mage::app()->getRequest()->getParams();
-		$packetaId = $requestParams['packetaId'];
-		$packetaName = $requestParams['packetaName'];
-		$data = $this->prepareData($order, $packetaId, $packetaName);
 
-		$this->saveData($data);
-	}
+		// Editace objednávky - objednávka má svého předka
+		if($parentOrderNumber) {
+			$packeteryOrder = Mage::getModel('zasilkovna/porder')->load($parentOrderNumber, 'order_number');
+			$branchId = $packeteryOrder->getData('branch_id');
+			$pointName = $packeteryOrder->getData('point_name');
 
-	/**
-	 * Vypocita celkovou hmotnost objednavky
-	 */
-	private function getOrderTotalWeight($order)
-	{
-		$items = $order->getAllItems();
-		$weightTotal = 0;
-
-		foreach ($items as $item)
-		{
-			$weightTotal += $item->getWeight();
 		}
-		return $weightTotal;
+		else {
+			$requestParams = Mage::app()->getRequest()->getParams();
+			$branchId = $requestParams['packetaId'];
+			$pointName = $requestParams['packetaName'];
+		}
+
+		$data = $this->prepareData($order, $branchId, $pointName);
+		$this->saveData($data);
 	}
 
 	/**
@@ -161,10 +178,22 @@ class Zasilkovna_Checkout_Model_Observer{
 
 	/**
 	 * Pripravi na data pro ulozeni objednavky
+	 *
 	 * @param $order
+	 * @param $packetaId
+	 * @param $packetaName
+	 *
+	 * @return array
 	 */
 	private function prepareData($order, $packetaId, $packetaName)
 	{
+		$fictiveBranches = array(
+			'cz' => self::CZ_FICTIVE_BRANCH,
+			'sk' => self::SK_FICTIVE_BRANCH,
+			'hu' => self::HU_FICTIVE_BRANCH,
+		);
+
+		$country = strtolower($order->getShippingAddress()->getCountryId());
 		$paymentMethod = $order->getPayment()->getMethodInstance()->getCode();
 		$shippingAddress = $order->getShippingAddress();
 
@@ -176,11 +205,11 @@ class Zasilkovna_Checkout_Model_Observer{
 			'recipient_lastname' => $shippingAddress->getLastname(),
 			'recipient_phone' => $shippingAddress->getTelephone(),
 			'recipient_email' => $shippingAddress->getEmail(),
-			'weight' => $this->getOrderTotalWeight($order),
+			'weight' => $order->getWeight(),
 			'currency' => $order->getOrderCurrencyCode(),
 			'value' => $order->getGrandTotal(),
-			'branch_id' => $packetaId,
-			'point_name' => $packetaName,
+			'branch_id' => ($packetaId ? $packetaId : (isset($fictiveBranches[$country]) ? $fictiveBranches[$country]['id'] : self::CZ_FICTIVE_BRANCH['id'])),
+			'point_name' => ($packetaId ? $packetaName : (isset($fictiveBranches[$country]) ? $fictiveBranches[$country]['name'] : self::CZ_FICTIVE_BRANCH['name'])),
 			'cod' => ($this->isCod($paymentMethod) ? $order->getShippingAmount() : 0),
 			'recipient_company' => $shippingAddress->getCompany(),
 			'recipient_street' => $street,

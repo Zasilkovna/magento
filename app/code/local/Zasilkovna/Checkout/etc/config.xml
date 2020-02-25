@@ -5,10 +5,11 @@
             <zasilkovna>
                 <active>1</active>
                 <sallowspecific>0</sallowspecific>
+                <shipment_requesttype>0</shipment_requesttype>
                 <model>Zasilkovna_Checkout_Model_Carrier_ShippingMethod</model>
                 <name>Zásilkovna</name>
-                <title>Zásilkovna</title>
-                <specificerrmsg>Tato metoda je aktuálně nedostupná. Pokud byste chtěli nakoupit tímto způsobem dopravy, kontaktujte nás.
+                <title>Packeta</title>
+                <specificerrmsg>This method is currently unavailable. If you would like to purchase this shipping method, please contact us.
                 </specificerrmsg>
                 <price>0</price>
             </zasilkovna>

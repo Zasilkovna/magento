@@ -2,7 +2,7 @@
 
 class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Action
 {
-	const EXPORT_FILE_NAME = 'zasilkovna_';
+	const EXPORT_FILE_NAME = 'packetExport';
 
 	public function indexAction()
 	{
@@ -48,7 +48,7 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
 		}
 		else
 		{
-			Mage::getSingleton('core/session')->addError('Chyba! Nenalezena žádná data pro export.');
+			Mage::getSingleton('core/session')->addError('Error! no export data found.');
 			$this->_redirectUrl($this->_getRefererUrl());
 		}
 	}
@@ -62,7 +62,7 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
 
 		if($file !== FALSE)
 		{
-			// toto bych sjednotil do metody
+			// TODO: toto bych sjednotil do metody
 			$connection = Mage::getSingleton('core/resource')->getConnection('core_write');
 
             $queryExportedAt = "UPDATE packetery_order SET exported_at=(now())";
@@ -75,7 +75,7 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
 		}
 		else
 		{
-			Mage::getSingleton('core/session')->addError('Chyba! Nenalezena žádná data pro export.');
+			Mage::getSingleton('core/session')->addError('Error! no export data found.');
 			$this->_redirectUrl($this->_getRefererUrl());
 		}
 
@@ -94,10 +94,14 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
 
             if($file !== FALSE)
             {
-				// toto bych sjednotil do metody
+				// TODO: toto bych sjednotil do metody
                 $connection = Mage::getSingleton('core/resource')->getConnection('core_write');
 
-                $queryExportedAt = "UPDATE packetery_order SET exported_at=(now()) WHERE id IN(".implode(',', $orderIds ).")";
+				$actualDateTime = Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
+				$datetime = new DateTime($actualDateTime);
+				$dt = $datetime->format("Y-m-d H:i:s");
+
+				$queryExportedAt = "UPDATE packetery_order SET exported_at= '$dt' WHERE id IN(".implode(',', $orderIds ).")";
                 $connection->query($queryExportedAt);
 
                 $queryExported = "UPDATE packetery_order SET exported=1 WHERE id IN(".implode(',', $orderIds ).")";
@@ -107,7 +111,7 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
             }
             else
             {
-                Mage::getSingleton('core/session')->addError('Chyba! Nenalezena žádná data pro export.');
+                Mage::getSingleton('core/session')->addError('Error! no export data found.');
                 $this->_redirectUrl($this->_getRefererUrl());
             }
 
@@ -115,14 +119,23 @@ class Zasilkovna_Checkout_Adminhtml_OrderController extends Mage_Adminhtml_Contr
 		// tohle je zde proc?
         $this->_redirect('*/*/index');
 	}
-	
+
 	/**
 	 * Prebere se soucasny nazev ktery vygeneruje grid a rozsiri se prefix zasilkovna
-	 * @param array $file
+	 *
+	 * @param string $extension
+	 *
+	 * @return string
+	 * @throws \Exception
 	 */
-	private function getExportFileName($extension = '.csv')
+	private function getExportFileName($extension = 'csv')
 	{
-		return self::EXPORT_FILE_NAME . md5(microtime()). $extension;
+		$datetime = new DateTime();
+		$timezone = new DateTimeZone(Mage::getStoreConfig('general/locale/timezone'));
+		$datetime->setTimezone($timezone);
+		$date = $datetime->format("Y-m-d");
+		$time = $datetime->format("His");
+		return sprintf("%s-%s-%d.%s",self::EXPORT_FILE_NAME, $date, $time, $extension);
 	}
 }
 

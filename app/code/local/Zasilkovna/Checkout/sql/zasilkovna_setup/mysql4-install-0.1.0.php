@@ -16,7 +16,7 @@ CREATE TABLE `packetery_order` (
   `value` DECIMAL(8,2) NOT NULL COMMENT 'Packet value for insurance purposes',
   `weight` DECIMAL(4,2) NULL COMMENT 'Weight in kilograms',
   `branch_id` VARCHAR(32) NOT NULL COMMENT 'Packetery branch id',
-  `point_name` VARCHAR(1024) NULL,pokud je 
+  `point_name` VARCHAR(1024) NULL,
   `sender_label` VARCHAR(64) NULL COMMENT 'Sender (e-shop) label. in case of multiple senders.',
   `adult_content` TINYINT UNSIGNED NULL,
   `delayed_delivery` DATE NULL,

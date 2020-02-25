@@ -174,7 +174,7 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_GridExport extends Mage_Ad
         ));
 
         $this->addColumn('exported', array(
-			'header' => Mage::helper('zasilkovna')->__('Exportováno'),
+			'header' => Mage::helper('zasilkovna')->__('Exported'),
             'sortable' => true,
             'width' => '60',
 			'index' => 'exported',
@@ -183,10 +183,6 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_GridExport extends Mage_Ad
 			'renderer' => 'Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_ValueDummy',
 			'filter_condition_callback' => array($this, 'filterOptionExport')
         ));
-
-		$this->addExportType('*/*/exportZasilkovnaCsv', Mage::helper('zasilkovna')->__('CSV - Pouze neexportované'));
-
-		$this->addExportType('*/*/exportZasilkovnaCsvAll', Mage::helper('zasilkovna')->__('CSV - Všechny záznamy'));
 
         return parent::_prepareColumns();
     }
@@ -350,7 +346,7 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_GridExport extends Mage_Ad
         $io->open(array('path' => $path));
         $io->streamOpen($file, 'w+');
         $io->streamLock(true);
-        $io->streamWriteCsv([Mage::helper('zasilkovna')->__('Verze 5')]);
+        $io->streamWriteCsv([Mage::helper('zasilkovna')->__('Version 5')]);
         $io->streamWriteCsv([""]);
 
         return $io;

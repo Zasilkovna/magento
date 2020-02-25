@@ -7,7 +7,7 @@
       <children>
         <!-- Module identifier -->
         <zasilkovna_checkout>
-          <title>Zásilkovna - objednávky</title>
+          <title>Packeta - orders</title>
           <!-- Order in menu -->
           <sort_order>500</sort_order>
           <!-- frontname/controller/action -->
@@ -20,18 +20,18 @@
   <acl>
     <resources>
       <all>
-        <title>Povolit vše</title>
+        <title>Accept all</title>
       </all>
       <admin>
         <children>
           <!-- This is for the Sales option of the Backend Menu -->
           <sales translate="title" module="Zasilkovna_Checkout">
-            <title>Zásilkovna - objednávky</title>
+            <title>Packeta - orders</title>
             <sort_order>60</sort_order>
             <children>
               <!-- This is the module identifier we used above-->
               <zasilkovna_chcekout>
-                <title>Zásilkovna - objednávky</title>
+                <title>Packeta - orders</title>
               </zasilkovna_chcekout>
             </children>
           </sales>

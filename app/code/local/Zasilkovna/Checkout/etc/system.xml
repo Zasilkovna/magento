@@ -4,14 +4,14 @@
         <carriers>
             <groups>
                 <zasilkovna translate="label" module="shipping">
-                    <label>Zásilkovna</label>
+                    <label>Packeta</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>103</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <comment><![CDATA[
-                            <i>Další nastavení lze provést Systém -> Konfigurace -> Zásilkovna</i>
+                            <i>Other settings could be set in Systém -> Configuration -> Packeta</i>
                     ]]></comment>
                     <fields>
                         <active translate="label">
@@ -54,7 +54,7 @@
 
 
         <zasilkovna_options translate="label" module="zasilkovna">
-            <label>Nastavení widgetu</label>
+            <label>Widget settings</label>
             <tab>zasilkovnaconfig</tab>
             <sort_order>1000</sort_order>
             <show_in_default>1</show_in_default>
@@ -62,14 +62,14 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <configuration translate="label">
-                    <label>Nastavení widgetu</label>
+                    <label>Widget settings</label>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <api_key>
-                            <label>API klíč</label>
+                            <label>API key</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>1</sort_order>
                             <show_in_default>1</show_in_default>
@@ -84,7 +84,7 @@
 
 
         <zasilkovna_rules translate="label" module="zasilkovna">
-            <label>Cenová pravidla</label>
+            <label>Price rules</label>
             <tab>zasilkovnaconfig</tab>
             <sort_order>2000</sort_order>
             <show_in_default>1</show_in_default>
@@ -93,14 +93,14 @@
             <groups>
 
                 <configuration_global translate="label">
-                    <label>Globální nastavení</label>
+                    <label>Global settings</label>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -111,7 +111,7 @@
                         </default_price>
 
                         <max_weight>
-                            <label>Maximální váha</label>
+                            <label>Max. weight</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
@@ -122,7 +122,7 @@
                         </max_weight>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
@@ -134,14 +134,14 @@
                 </configuration_global>
 
                 <configuration translate="label">
-                    <label>Pravidla - ostatní země</label>
+                    <label>Rules - other countries</label>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -152,7 +152,7 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
@@ -162,7 +162,7 @@
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -176,14 +176,14 @@
                 </configuration>
 
                 <configuration_cz translate="label">
-                    <label>Pravidla CZ</label>
+                    <label>Rules CZ</label>
                     <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -194,17 +194,17 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment></comment>
+                            <comment>Free shipping threshold for Czech Republic.</comment>
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -218,14 +218,14 @@
                 </configuration_cz>
 
                 <configuration_sk translate="label">
-                    <label>Pravidla SK</label>
+                    <label>Rules SK</label>
                     <sort_order>3</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -236,17 +236,17 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment></comment>
+                            <comment>Free shipping threshold for Slovakia.</comment>
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -260,14 +260,14 @@
                 </configuration_sk>
 
                 <configuration_pl translate="label">
-                    <label>Pravidla PL</label>
+                    <label>Rules PL</label>
                     <sort_order>4</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -278,17 +278,17 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment></comment>
+                            <comment>Free shipping threshold for Poland.</comment>
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -302,14 +302,14 @@
                 </configuration_pl>
 
                 <configuration_hu translate="label">
-                    <label>Pravidla HU</label>
+                    <label>Rules HU</label>
                     <sort_order>5</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -320,7 +320,7 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
@@ -330,7 +330,7 @@
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -344,14 +344,14 @@
                 </configuration_hu>
 
                 <configuration_ro translate="label">
-                    <label>Pravidla RO</label>
+                    <label>Rules RO</label>
                     <sort_order>6</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
                         <default_price>
-                            <label>Výchozí cena</label>
+                            <label>Default price</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -362,17 +362,17 @@
                         </default_price>
 
                         <free_shipping>
-                            <label>Doprava zdarma</label>
+                            <label>Free shipping</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment></comment>
+                            <comment>Free shipping threshold for Romania.</comment>
                         </free_shipping>
 
                         <price_rules translate="label">
-                            <label>Cenová pravidla</label>
+                            <label>Price rules</label>
                             <frontend_model>Zasilkovna_Checkout_Block_Adminhtml_Config_PriceRules</frontend_model>
                             <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
                             <sort_order>110</sort_order>
@@ -391,7 +391,7 @@
         </zasilkovna_rules>
 
         <zasilkovna_cod translate="label" module="zasilkovna">
-            <label>Dobírka</label>
+            <label>COD</label>
             <tab>zasilkovnaconfig</tab>
             <sort_order>3000</sort_order>
             <show_in_default>1</show_in_default>
@@ -400,7 +400,7 @@
             <groups>
 
                 <configuration translate="label">
-                    <label>Platební metody</label>
+                    <label>Payment methods</label>
                     <sort_order>1</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -409,7 +409,7 @@
 
                         <cod translate="label">
 
-                            <label>Dobírka</label>
+                            <label>COD</label>
                             <frontend_type>multiselect</frontend_type>
                             <sort_order>3</sort_order>
                             <show_in_default>1</show_in_default>
@@ -419,7 +419,7 @@
                             <source_model>Zasilkovna_Checkout_Model_Misc_Payment</source_model>
 
 
-                            <comment>Platební metody vybrané výše budou považovány za platební metody na dobírku (pro Zásilkovnu).</comment>
+                            <comment>Payment methods selected above will be considered as cash on delivery (for Packeta).</comment>
                         </cod>
                     </fields>
                 </configuration>
@@ -430,7 +430,7 @@
     </sections>
     <tabs>
         <zasilkovnaconfig translate="label" module="zasilkovna">
-            <label>Zásilkovna konfigurace</label>
+            <label>Packeta configuration</label>
             <sort_order>99999</sort_order>
         </zasilkovnaconfig>
     </tabs>

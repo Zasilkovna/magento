@@ -13,7 +13,7 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items extends Mage_Adminhtml_Blo
 		// The controller must match the second half of how we call the block
 		$this->_controller = 'adminhtml_order_items';
 
-		$this->_headerText = Mage::helper('adminhtml')->__('Zásilkovna Orders');
+		$this->_headerText = Mage::helper('adminhtml')->__('Packeta Orders');
 
 
 		parent::__construct();

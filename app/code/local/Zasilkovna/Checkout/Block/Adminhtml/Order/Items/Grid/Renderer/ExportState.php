@@ -7,6 +7,6 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_ExportState
     {
         $exported = $row->getData('exported');
 
-        return empty($exported) ? Mage::helper('zasilkovna')->__('Ne') : Mage::helper('zasilkovna')->__('Ano');
+        return empty($exported) ? Mage::helper('zasilkovna')->__('No') : Mage::helper('zasilkovna')->__('Yes');
     }
 }

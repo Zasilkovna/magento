@@ -3,7 +3,7 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
 {
     const MODUL_NAME = 'zasilkovna';
     const MODUL_TITLE = 'Zásilkovna';
-    const MODUL_IDENTITY = 'magento-1.9-packeta-4.1';
+    const MODUL_IDENTITY = 'magento-1.9-packeta-4.2';
     const MODUL_CONF = 'zasilkovna_rules/configuration%s/';
     const MODUL_CONF_GLOBAL = 'zasilkovna_rules/configuration_global/';
 
@@ -18,8 +18,9 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
 
 	public function collectRates(Mage_Shipping_Model_Rate_Request $request)
 	{
+
 		// skip if not enabled
-		if(!Mage::getStoreConfig('carriers/'.$this->_code.'/active'))
+		if(!Mage::getStoreConfig('carriers/'.$this->_code.'/active') || !in_array(strtolower($request->getDestCountryId()), $this->getCountryCodes()))
 			return false;
 
         $this->initProps($request);
@@ -66,23 +67,23 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
 
 	protected function _getWeighted(){
 
-		$price = PHP_INT_MIN; 
+		$price = 0;
         
 		foreach ($this->_weightRules as $rule){
-
-            if( $this->_weightTotal >= $rule['weight_min'] && $this->_weightTotal <= $rule['weight_max'] )
+            if( $this->_weightTotal > $rule['weight_min'] && $this->_weightTotal <= $rule['weight_max'] )
             {
                 $price = $rule['price'];
 			}
         }
-        
-        if($price >= 0)
+
+        if($price > 0)
         {
             return $this->initMethodPrice($price);
         }
         else
         {
-            return $this->_getDefault();
+			$price = $this->_getDefault()->getData()['price'];
+			return $this->initMethodPrice($price);
         }
 	}
 
@@ -137,8 +138,14 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
     private function initProps(Mage_Shipping_Model_Rate_Request $request)
     {
         $this->_countryCode = $request->getDestCountryId();
-        $this->_weightTotal = $request->getPackageWeight();
-        $this->_priceSubtotal = (int) $request->getPackageValue();
+
+		$orderId = Mage::app()->getRequest()->getParam('order_id');
+		$order = Mage::getModel('sales/order')->load($orderId);
+
+		$request->getPackageWeight();
+
+		$this->_weightTotal = ($orderId ? $order->getWeight() : $request->getPackageWeight());
+		$this->_priceSubtotal = (int) $request->getPackageValue();
 
         $configSufix = strtolower($this->_countryCode);
         $this->_configPath = sprintf(self::MODUL_CONF, "_$configSufix");
@@ -182,7 +189,7 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
 
     /**
      * Priprava JS skriptu pro vyvolani widggetu
-     * TODO: bylo by lepsi to navazt do sablony
+     * TODO: bylo by lepsi to navazat do sablony
      */
     public static function getPacketaJS($countryId, $shipStreet, $shipCity)
     {
@@ -195,8 +202,6 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
             'appIdentity' 	=> self::MODUL_IDENTITY,
             'country' 		=> strtolower($countryId),
             'language' 		=> reset($languageParts),
-            'street' 		=> $shipStreet,
-            'city' 			=> $shipCity,
         ];
     
         $packteraJS = "Packeta.Widget.pick('$packetaApiKey', showSelectedPickupPoint," . json_encode($options) . ")";	
@@ -204,4 +209,25 @@ class Zasilkovna_Checkout_Model_Carrier_ShippingMethod extends Mage_Shipping_Mod
         // potrebuji tam apostrof
         return str_replace("\"", "'", $packteraJS);
     }
+
+	/**
+	 * @return array
+	 */
+	private function getCountryCodes()
+	{
+		// get settings for countries
+		$packetaConfigRules = Mage::getStoreConfig('zasilkovna_rules');
+
+		// get country codes
+		$packetaRuleKey = array();
+		unset($packetaConfigRules['configuration'], $packetaConfigRules['configuration_global']);
+		$countryCodes = array();
+		foreach ($packetaConfigRules as $packetaRuleKey => $packetaRule)
+		{
+
+			$countryCodes[] = str_replace('configuration_', '', $packetaRuleKey);
+		}
+
+		return array_unique($countryCodes);
+	}
 }

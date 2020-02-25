@@ -7,6 +7,6 @@ class Zasilkovna_Checkout_Block_Adminhtml_Order_Items_Grid_Renderer_CodState
     {
         $cod = $row->getData('cod');
 
-        return ($cod == $cod > 0 ? Mage::helper('zasilkovna')->__('Ano') : Mage::helper('zasilkovna')->__('Ne'));
+        return ($cod == $cod > 0 ? Mage::helper('zasilkovna')->__('Yes') : Mage::helper('zasilkovna')->__('No'));
     }
 }
