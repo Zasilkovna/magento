@@ -40,9 +40,9 @@ class Zasilkovna_Checkout_Model_Observer{
 	* Neni uplne idealni, mit tu validaci takto, ale ponechavam zatim toto reseni.
 	**/
 	private function validateRules(){
-		
-		$groups = Mage::app()->getRequest()->getPost('groups'); 
-		
+
+		$groups = Mage::app()->getRequest()->getPost('groups');
+
 		foreach ($groups as $key => $group)
 		{
             if(empty($group['fields']['price_rules']['value']))
@@ -50,17 +50,17 @@ class Zasilkovna_Checkout_Model_Observer{
                 if(empty($group['fields']['default_price']['value']))
                 {
                     $message = Mage::helper('zasilkovna')->__('Some prices are not filled');
-                    throw new Exception($message);                
+                    throw new Exception($message);
                 }
                 continue;
             }
             $params = $group['fields']['price_rules']['value'];
             $groupNameParts = explode(self::CONFIGURATION_KEY, $key);
-            $groupName = end($groupNameParts);            
+            $groupName = end($groupNameParts);
             // jen pro kody zemi
             $groupName = (!empty($groupName) && strlen($groupName) == 2 ? sprintf("[%s]: ", strtoupper($groupName)) : "");
-            $weightMax = 0; 
-		
+            $weightMax = 0;
+
             foreach ($params as $key => $line)
             {
                 if($key == "__empty")
@@ -103,9 +103,9 @@ class Zasilkovna_Checkout_Model_Observer{
 		$orderId = $orderEvent->getIncrementId();
 		$parentOrderNumber = $orderEvent->getRelationParentRealId();
 
-		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId); 
+		$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
 		$shippingMethod = $order->getShippingMethod();
-		
+
 		// RUN ONLY IF ZASILKOVNA CARRIER IS SELECTED
 		if($shippingMethod != self::SHIPPING_CODE)
 		{
@@ -153,7 +153,7 @@ class Zasilkovna_Checkout_Model_Observer{
 	}
 
 	/**
-	 * Overeni podle nastaveni modulu, jestli je pro zasilkovnu 
+	 * Overeni podle nastaveni modulu, jestli je pro zasilkovnu
 	 * dobirka nebo ne.
 	 */
 	private function isCod($methodCode)
@@ -168,7 +168,7 @@ class Zasilkovna_Checkout_Model_Observer{
 	private function getLabel()
 	{
         $store = Mage::app()->getStore();
-        
+
         if($store)
         {
             return $store ->getFrontendName();
@@ -200,7 +200,7 @@ class Zasilkovna_Checkout_Model_Observer{
 		list($street, $houseNumber) = $this->parseOrderAddres($shippingAddress);
 
 		return array(
-			'order_number' => $order->getIncrementId(), 
+			'order_number' => $order->getIncrementId(),
 			'recipient_firstname' => $shippingAddress->getFirstname(),
 			'recipient_lastname' => $shippingAddress->getLastname(),
 			'recipient_phone' => $shippingAddress->getTelephone(),
@@ -210,7 +210,7 @@ class Zasilkovna_Checkout_Model_Observer{
 			'value' => $order->getGrandTotal(),
 			'branch_id' => ($packetaId ? $packetaId : (isset($fictiveBranches[$country]) ? $fictiveBranches[$country]['id'] : self::CZ_FICTIVE_BRANCH['id'])),
 			'point_name' => ($packetaId ? $packetaName : (isset($fictiveBranches[$country]) ? $fictiveBranches[$country]['name'] : self::CZ_FICTIVE_BRANCH['name'])),
-			'cod' => ($this->isCod($paymentMethod) ? $order->getShippingAmount() : 0),
+			'cod' => ($this->isCod($paymentMethod) ? $order->getGrandTotal() : 0),
 			'recipient_company' => $shippingAddress->getCompany(),
 			'recipient_street' => $street,
 			'recipient_house_number' => $houseNumber,
@@ -227,11 +227,11 @@ class Zasilkovna_Checkout_Model_Observer{
 	private function saveData($data)
 	{
 		$connection = Mage::getSingleton('core/resource')->getConnection('core_write');
-		
-		$query = "INSERT INTO packetery_order 
-					(`order_number`, `recipient_firstname`, `recipient_lastname`, `recipient_phone`, `recipient_company`, `recipient_email`, `cod` ,`currency`,`value`, `weight`,`branch_id`,`point_name`,`recipient_street`,`recipient_house_number`,`recipient_city`,`recipient_zip`, `store_label`) 
+
+		$query = "INSERT INTO packetery_order
+					(`order_number`, `recipient_firstname`, `recipient_lastname`, `recipient_phone`, `recipient_company`, `recipient_email`, `cod` ,`currency`,`value`, `weight`,`branch_id`,`point_name`,`recipient_street`,`recipient_house_number`,`recipient_city`,`recipient_zip`, `store_label`)
 					VALUES (:order_number, :recipient_firstname, :recipient_lastname, :recipient_phone, :recipient_company,:recipient_email, :cod, :currency, :value, :weight, :branch_id, :point_name, :recipient_street, :recipient_house_number, :recipient_city, :recipient_zip, :store_label)";
 
-		$connection->query($query, $data);		
+		$connection->query($query, $data);
 	}
 }
