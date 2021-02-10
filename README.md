@@ -1,3 +1,5 @@
+# [DEPRECATED] - modul již není udržován/no longer actively maintained
+
 [Návod v češtině](https://github.com/Zasilkovna/magento#modul-pro-magento-19)
 
 # Module for Magento 1.9
